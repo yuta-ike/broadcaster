@@ -1,0 +1,73 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "useImportExtensions": {
+          "level": "warn",
+          "options": {
+            "forceJsExtensions": true
+          }
+        },
+        "noUnusedImports": {
+          "level": "warn",
+          "fix": "safe"
+        },
+        "noUnusedVariables": {
+          "level": "warn",
+          "fix": "safe"
+        }
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "info",
+          "fix": "safe"
+        }
+      },
+      "style": {
+        "noNonNullAssertion": "off"
+      },
+      "a11y": {
+        "noLabelWithoutControl": {
+          "level": "error",
+          "options": {
+            "inputComponents": ["Checkbox", "Radio"]
+          }
+        }
+      }
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "asNeeded"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "esnext",
+    "types": ["node"],
+    "noEmit": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "broadcaster-components/*": ["../components/src/*"],
+      "broadcaster-db/*": ["../db/src/*"]
+    }
+  },
+  "include": ["src", "scripts"]
+}

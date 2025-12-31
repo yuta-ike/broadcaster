@@ -1,0 +1,53 @@
+{
+  "name": "broadcaster-admin",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "waku dev",
+    "build": "pnpm build:cache && pnpm build:app",
+    "build:app": "waku build",
+    "start": "waku start",
+    "check": "biome check",
+    "fix": "biome check --write",
+    "type-check": "tsgo -p tsconfig.json",
+    "slack-entry": "tsx --env-file-if-exists .env.local ./src/tmp-slack.ts",
+    "build:cache": "tsx --env-file-if-exists .env.local ./scripts/cache/slack-channels.ts"
+  },
+  "dependencies": {
+    "@base-ui/react": "catalog:",
+    "@slack/web-api": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "better-auth": "catalog:",
+    "broadcaster-components": "workspace:*",
+    "broadcaster-db": "workspace:*",
+    "drizzle-orm": "catalog:",
+    "pg": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-icons": "catalog:",
+    "react-server-dom-webpack": "catalog:",
+    "waku": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@dnd-kit/core": "catalog:",
+    "@dnd-kit/modifiers": "catalog:",
+    "@dnd-kit/sortable": "catalog:",
+    "@dnd-kit/utilities": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/pg": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "babel-plugin-react-compiler": "catalog:",
+    "drizzle-kit": "catalog:",
+    "tailwindcss": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vite-plugin-inspect": "catalog:"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

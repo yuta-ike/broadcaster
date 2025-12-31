@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@source "../../../components/src";
+
+body {
+  position: relative;
+}
+
+button,
+select {
+  @apply cursor-pointer;
+}

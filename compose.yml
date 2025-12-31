@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:18
+    container_name: broadcaster_db
+    restart: always
+    ports:
+      - 5433:5432
+    volumes:
+      - broadcaster-db-store:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: broadcaster
+
+volumes:
+  broadcaster-db-store:

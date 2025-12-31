@@ -1,0 +1,23 @@
+{
+  "name": "broadcaster-components",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "check": "biome check",
+    "fix": "biome check --write",
+    "type-check": "tsgo -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@standard-schema/spec": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@base-ui/react": "catalog:",
+    "react-icons": "catalog:",
+    "zod": "catalog:"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

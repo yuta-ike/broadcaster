@@ -1,0 +1,14 @@
+{
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "fmt": {
+    "include": ["src", "manifest.ts"]
+  },
+  "importMap": "import_map.json",
+  "lint": {
+    "include": ["src", "manifest.ts"]
+  },
+  "lock": false,
+  "tasks": {
+    "test": "deno fmt --check && deno lint && deno test --allow-read --allow-none"
+  }
+}

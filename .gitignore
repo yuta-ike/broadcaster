@@ -1,0 +1,11 @@
+node_modules
+dist
+.env*
+!.env*.example
+*.tsbuildinfo
+.cache
+.DS_Store
+*.pem
+.idea/
+.vercel/
+.slack/apps.dev.json

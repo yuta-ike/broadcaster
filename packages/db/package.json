@@ -1,0 +1,38 @@
+{
+  "name": "broadcaster-db",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "exports": {
+    "db": {
+      "import": "./src/db.js"
+    },
+    "schema": {
+      "import": "./src/schema.js"
+    }
+  },
+  "scripts": {
+    "db:gen": "dotenv -e .env.local -- drizzle-kit generate --name",
+    "db:migrate": "dotenv -e .env.local -- drizzle-kit migrate",
+    "db:seed": "tsx --env-file .env.local ./src/seed.ts",
+    "type-check": "tsgo -p tsconfig.json"
+  },
+  "dependencies": {
+    "better-auth": "catalog:",
+    "drizzle-orm": "catalog:",
+    "pg": "catalog:",
+    "postgres": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/pg": "catalog:",
+    "@typescript/native-preview": "catalog:",
+    "dotenv-cli": "catalog:",
+    "drizzle-kit": "catalog:",
+    "tsx": "catalog:"
+  },
+  "packageManager": "pnpm@10.20.0",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

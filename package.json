@@ -1,0 +1,34 @@
+{
+  "name": "broadcaster",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "check": "biome check",
+    "fix": "biome check --write",
+    "type-check": "pnpm -r type-check",
+    "build:admin": "VERCEL=1 pnpm -F broadcaster-admin build",
+    "start:admin": "pnpm -F broadcaster-admin start"
+  },
+  "dependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-server-dom-webpack": "catalog:",
+    "waku": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@tailwindcss/vite": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "babel-plugin-react-compiler": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vercel": "catalog:"
+  },
+  "packageManager": "pnpm@10.25.0",
+  "volta": {
+    "node": "24.11.0"
+  }
+}
