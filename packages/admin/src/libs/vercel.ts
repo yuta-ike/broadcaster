@@ -9,17 +9,21 @@ type Urls = {
 
 const getUrls = (): Urls => {
   const isPreview = process.env.VERCEL_ENV === "preview"
-  const productionUrl = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  const productionUrl =
+    process.env.VERCEL === "1"
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.BASE_URL
 
-  const baseUrl: string | undefined =
+  const baseUrl =
     process.env.VERCEL === "1"
       ? process.env.VERCEL_ENV === "production"
         ? productionUrl
         : isPreview
           ? `https://${process.env.VERCEL_URL}`
           : undefined
-      : undefined
+      : process.env.BASE_URL
 
+  console.log("BASE: ", baseUrl)
   return {
     isPreview,
     baseUrl,
