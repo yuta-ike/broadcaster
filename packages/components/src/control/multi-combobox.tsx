@@ -1,6 +1,6 @@
 import { Combobox as BaseCombobox } from "@base-ui/react/combobox"
 import { useRef } from "react"
-import { TbCheck, TbX } from "react-icons/tb"
+import { TbCheck, TbChevronDown, TbX } from "react-icons/tb"
 import { BASE_HEIGHT } from "./height.js"
 
 type SelectItem<Id extends string> = {
@@ -51,7 +51,7 @@ export const MultiCombobox = <Id extends string, Item extends SelectItem<Id>>({
                   return (
                     <BaseCombobox.Chip
                       key={id}
-                      className="flex cursor-pointer items-center gap-0.5 rounded-full bg-gray-100 p-1 text-gray-900 text-sm outline-none focus-within:bg-slate-400 focus-within:text-gray-50 [@media(hover:hover)]:data-highlighted:bg-blue-800 [@media(hover:hover)]:data-highlighted:text-gray-50"
+                      className="flex cursor-pointer items-center gap-0.5 rounded-lg border border-slate-200 p-0.5 text-gray-900 text-sm outline-none focus-within:bg-slate-400 focus-within:text-gray-50 [@media(hover:hover)]:data-highlighted:bg-blue-800 [@media(hover:hover)]:data-highlighted:text-gray-50"
                       aria-label={item.label}
                     >
                       {renderItem != null ? renderItem(item) : item.label}
@@ -66,9 +66,10 @@ export const MultiCombobox = <Id extends string, Item extends SelectItem<Id>>({
                 })}
                 <BaseCombobox.Input
                   id={id}
-                  placeholder={placeholder}
-                  className="flex-1 rounded-md border-0 bg-transparent pl-2 text-base text-gray-900 outline-none"
+                  placeholder={value.length === 0 ? placeholder : undefined}
+                  className="flex-1 rounded-md border-0 bg-transparent pl-2 text-base text-gray-900 outline-none placeholder:text-slate-300"
                 />
+                <TbChevronDown />
               </>
             )}
           </BaseCombobox.Value>
@@ -89,7 +90,7 @@ export const MultiCombobox = <Id extends string, Item extends SelectItem<Id>>({
               {(item: Item) => (
                 <BaseCombobox.Item
                   key={item.id}
-                  className="grid cursor-pointer select-none grid-cols-[1rem_1fr] items-center gap-2 py-2 pr-8 pl-4 text-base leading-4 outline-none [@media(hover:hover)]:data-highlighted:relative [@media(hover:hover)]:data-highlighted:z-0 [@media(hover:hover)]:data-highlighted:before:absolute [@media(hover:hover)]:data-highlighted:before:inset-x-2 [@media(hover:hover)]:data-highlighted:before:inset-y-0 [@media(hover:hover)]:data-highlighted:before:z-[-1] [@media(hover:hover)]:data-highlighted:before:rounded-sm [@media(hover:hover)]:data-highlighted:before:bg-slate-100"
+                  className="grid cursor-pointer select-none grid-cols-[1rem_1fr] items-center gap-2 py-1 pr-4 pl-2 text-base leading-4 outline-none [@media(hover:hover)]:data-highlighted:relative [@media(hover:hover)]:data-highlighted:z-0 [@media(hover:hover)]:data-highlighted:before:absolute [@media(hover:hover)]:data-highlighted:before:inset-x-2 [@media(hover:hover)]:data-highlighted:before:inset-y-0 [@media(hover:hover)]:data-highlighted:before:z-[-1] [@media(hover:hover)]:data-highlighted:before:rounded-sm [@media(hover:hover)]:data-highlighted:before:bg-slate-100"
                   value={item.id}
                 >
                   <BaseCombobox.ItemIndicator className="col-start-1">

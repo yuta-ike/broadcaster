@@ -23,7 +23,7 @@ const CopyButton = ({ text }: { text: string }) => {
     <button
       type="button"
       onClick={handleClick}
-      className="group inline-flex items-center gap-1 rounded border border-slate-200 bg-slate-100 p-1 text-slate-800 text-xs hover:opacity-85"
+      className="group inline-flex items-center gap-1 rounded border border-slate-200 bg-slate-100 p-px text-slate-800 text-xs hover:opacity-85"
     >
       <code className="">{text}</code>
       {hasCopied ? (

@@ -138,10 +138,14 @@ export const SponsorUpsertForm = ({
           }))}
           value={values.labels}
           onValueChange={(value) => setValue("labels", value)}
-          renderItem={(item) => {
-            const label = labelMap.get(item.label)!
-            return <LabelDisplay key={item.id} label={label} />
-          }}
+          renderItem={(item) => (
+            <LabelDisplay
+              key={item.id}
+              style="dot"
+              label={labelMap.get(item.label)!}
+            />
+          )}
+          placeholder="ラベル名"
         />
       </FormControl>
 

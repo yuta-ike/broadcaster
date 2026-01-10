@@ -18,7 +18,7 @@ const Page = () => {
       <title>ログイン</title>
       <div className="p-4">
         <Button type="button" onClick={handleSignin}>
-          ログインする
+          Googleアカウントでログイン
         </Button>
       </div>
     </div>

@@ -48,7 +48,7 @@ export const Combobox = <Id extends string, Item extends SelectItem<Id>>({
           {(value) => {
             const item = itemMap.get(value)
             if (item == null) {
-              return "選択してください"
+              return <span className="text-slate-300">選択してください</span>
             }
             return renderItem?.(item) ?? item.label
           }}
