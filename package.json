@@ -27,7 +27,7 @@
     "typescript": "catalog:",
     "vercel": "catalog:"
   },
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.28.0",
   "volta": {
     "node": "24.11.0"
   }

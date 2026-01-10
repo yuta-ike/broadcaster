@@ -58,6 +58,57 @@ export const labelTable = pgTable("labels", {
   updatedAt: timestamp().notNull().defaultNow(),
 })
 
+export const messageTable = pgTable("messages", {
+  id: uuid().primaryKey().defaultRandom(),
+  message: text().notNull(),
+  addMention: boolean().notNull(),
+  scheduledAt: timestamp(),
+  sendImmediately: boolean().notNull(),
+  sentAt: timestamp(),
+  createdAt: timestamp().notNull().defaultNow(),
+  updatedAt: timestamp().notNull().defaultNow(),
+})
+
+export const messageSponsorTable = pgTable(
+  "message_sponsors",
+  {
+    messageId: uuid()
+      .references(() => messageTable.id, {
+        onUpdate: "cascade",
+        onDelete: "cascade",
+      })
+      .notNull(),
+    sponsorId: uuid()
+      .references(() => sponsorTable.id, {
+        onUpdate: "cascade",
+        onDelete: "cascade",
+      })
+      .notNull(),
+    createdAt: timestamp().notNull().defaultNow(),
+  },
+  (t) => [unique().on(t.messageId, t.sponsorId)],
+)
+
+export const messageLabelTable = pgTable(
+  "message_labels",
+  {
+    messageId: uuid()
+      .references(() => messageTable.id, {
+        onUpdate: "cascade",
+        onDelete: "cascade",
+      })
+      .notNull(),
+    labelId: uuid()
+      .references(() => labelTable.id, {
+        onUpdate: "cascade",
+        onDelete: "cascade",
+      })
+      .notNull(),
+    createdAt: timestamp().notNull().defaultNow(),
+  },
+  (t) => [unique().on(t.messageId, t.labelId)],
+)
+
 // Auth
 export const userTable = pgTable("user", {
   id: text("id").primaryKey(),

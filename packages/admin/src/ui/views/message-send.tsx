@@ -9,10 +9,11 @@ import { SlackEditor } from "broadcaster-components/slack-editor.js"
 import { useTransition } from "react"
 import { getMessageController } from "../../controller/message-get.js"
 import type { MessageRefSchema } from "../../controller/message-get-schema.js"
-import { sendSlackMessageController } from "../../controller/send-slack-message.js"
-import { SendSlackMessageSchema } from "../../controller/send-slack-message-schema.js"
+import { createAndSendSlackMessageController } from "../../controller/slack-message-create-and-send.js"
+import { CreateAndSendSlackMessageSchema } from "../../controller/slack-message-create-and-send-schema.js"
 import type { Label, Sponsor } from "../../domain/model/Sponsor.js"
 import { VariableTable } from "../components/variable-list.js"
+import { ScheduleInput } from "../parts/ScheduleInput.js"
 import { SponsorsInput } from "../parts/SponsorsInput.js"
 
 const SLACK_WORKSPACE_DOMAIN = process.env.WAKU_PUBLIC_SLACK_WORKSPACE_DOMAIN
@@ -39,10 +40,13 @@ export const SendMessageForm = ({
     registerTextarea,
     getValidValues,
     registerSingleCheckbox,
-  } = useForm(SendSlackMessageSchema, {
+  } = useForm(CreateAndSendSlackMessageSchema, {
     message: initMessage ?? "",
     addMention: true,
+    scheduledAt: "Immediate" as Date | "Immediate",
+    targetType: "Label" as "Label" | "Sponsor",
     sponsorIds: [] as string[],
+    labelIds: [] as string[],
   })
 
   const [_, startTransition] = useTransition()
@@ -53,7 +57,7 @@ export const SendMessageForm = ({
       if (value == null) {
         return
       }
-      await sendSlackMessageController(value)
+      await createAndSendSlackMessageController(value)
       onComplete?.()
     })
   }
@@ -91,12 +95,24 @@ export const SendMessageForm = ({
       </FormControl>
 
       {/* 送信先 */}
-      <FormControl label="送信先スポンサー" required>
+      <FormControl label="送信先" required>
         <SponsorsInput
-          values={values.sponsorIds}
-          onChange={(vals) => setValue("sponsorIds", vals)}
+          targetType={values.targetType}
+          onChangeTargetType={(val) => setValue("targetType", val)}
+          sponsorIds={values.sponsorIds}
+          onChangeSponsorIds={(vals) => setValue("sponsorIds", vals)}
+          labelIds={values.labelIds}
+          onChangeLabelIds={(vals) => setValue("labelIds", vals)}
           labels={labels}
           sponsors={sponsors}
+        />
+      </FormControl>
+
+      {/* 送信タイミング */}
+      <FormControl label="送信日時" required>
+        <ScheduleInput
+          scheduledAt={values.scheduledAt}
+          onChangeScheduledAt={(val) => setValue("scheduledAt", val)}
         />
       </FormControl>
       <div>

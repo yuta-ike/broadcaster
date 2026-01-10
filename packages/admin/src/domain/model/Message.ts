@@ -1,3 +1,18 @@
+export type MessageTemplate = {
+  message: string
+  addMention: boolean
+  scheduledAt: Date | "Immediate"
+  target:
+    | {
+        type: "Sponsor"
+        sponsorIds: string[]
+      }
+    | {
+        type: "Label"
+        labelIds: string[]
+      }
+}
+
 const getPlaceholderMatcher = (key: string): RegExp => {
   return new RegExp(`{{\\s*${key}\\s*}}`, "g")
 }

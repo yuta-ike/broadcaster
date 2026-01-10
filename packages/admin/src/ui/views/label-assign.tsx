@@ -55,8 +55,8 @@ export const LabelAssignForm = ({ labels, sponsors, onComplete }: Props) => {
 
       <FormControl label="対象" required>
         <SponsorsInput
-          values={values.sponsorIds}
-          onChange={(vals) => setValue("sponsorIds", vals)}
+          sponsorIds={values.sponsorIds}
+          onChangeSponsorIds={(vals) => setValue("sponsorIds", vals)}
           labels={labels}
           sponsors={sponsors}
         />

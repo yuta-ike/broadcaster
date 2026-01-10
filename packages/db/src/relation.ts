@@ -2,6 +2,9 @@ import { defineRelations } from "drizzle-orm"
 import {
   accountTable,
   labelTable,
+  messageLabelTable,
+  messageSponsorTable,
+  messageTable,
   sessionTable,
   sponsorLabelTable,
   sponsorSlackUserTable,
@@ -20,6 +23,9 @@ export const relations = defineRelations(
     session: sessionTable,
     account: accountTable,
     verification: verificationTable,
+    message: messageTable,
+    targetSponsor: messageSponsorTable,
+    targetLabel: messageLabelTable,
   },
   (r) => ({
     sponsor: {
@@ -30,6 +36,16 @@ export const relations = defineRelations(
       labels: r.many.label({
         from: r.sponsor.id.through(r.sponsorLabel.sponsorId),
         to: r.label.id.through(r.sponsorLabel.labelId),
+      }),
+    },
+    message: {
+      targetSponsors: r.many.targetSponsor({
+        from: r.message.id,
+        to: r.targetSponsor.messageId,
+      }),
+      targetLabels: r.many.targetLabel({
+        from: r.message.id,
+        to: r.targetLabel.messageId,
       }),
     },
   }),

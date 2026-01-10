@@ -19,6 +19,7 @@ catalog:
   '@vitejs/plugin-react': 5.1.2
   babel-plugin-react-compiler: 1.0.0
   better-auth: 1.4.9
+  date-fns: ^4.1.0
   dotenv-cli: 11.0.0
   drizzle-kit: 1.0.0-beta.2-86f844e
   drizzle-orm: 1.0.0-beta.2-86f844e
