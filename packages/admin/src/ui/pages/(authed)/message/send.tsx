@@ -1,5 +1,6 @@
 import { parseSlackPermalink } from "broadcaster-components/utils/slack-parmalink.js"
 import type { PageProps } from "waku/router"
+import { unstable_redirect } from "waku/router/server"
 import { getMessageController } from "../../../../controller/message-get.js"
 import { listLabels } from "../../../../infrastructure/db/list-labels.js"
 import { listSponsors } from "../../../../infrastructure/db/list-sponsor.js"
@@ -36,6 +37,10 @@ const Page = async ({ query }: PageProps<"/message/send">) => {
           sponsors={sponsors}
           labels={labels}
           initMessage={slackMessage ?? undefined}
+          onComplete={async () => {
+            "use server"
+            unstable_redirect("/sponsors")
+          }}
         />
       </PageSection>
     </>

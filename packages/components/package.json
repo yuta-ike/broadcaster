@@ -14,10 +14,15 @@
   },
   "peerDependencies": {
     "@base-ui/react": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "react-icons": "catalog:",
     "zod": "catalog:"
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "dependencies": {
+    "date-fns": "catalog:"
   }
 }

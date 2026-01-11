@@ -1,5 +1,5 @@
-import { db } from "broadcaster-db/db"
-import type { MessageTemplate } from "../../domain/model/Message"
+import { db } from "broadcaster-db/db.js"
+import type { MessageTemplate } from "../../domain/model/Message.js"
 
 export const getScheduledMessages = async (): Promise<MessageTemplate[]> => {
   const rows = await db.query.message.findMany({

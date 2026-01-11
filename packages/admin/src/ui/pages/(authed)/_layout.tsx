@@ -46,6 +46,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           Send Message
         </Link>
         <Link
+          to="/message"
+          className="w-full rounded px-3 py-3 hover:bg-slate-100"
+        >
+          Messages
+        </Link>
+        <Link
           to="/sponsors"
           className="w-full rounded px-3 py-3 hover:bg-slate-100"
         >

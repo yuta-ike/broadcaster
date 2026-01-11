@@ -39,13 +39,13 @@ export const relations = defineRelations(
       }),
     },
     message: {
-      targetSponsors: r.many.targetSponsor({
-        from: r.message.id,
-        to: r.targetSponsor.messageId,
+      targetSponsors: r.many.sponsor({
+        from: r.message.id.through(r.targetSponsor.messageId),
+        to: r.sponsor.id.through(r.targetSponsor.sponsorId),
       }),
-      targetLabels: r.many.targetLabel({
-        from: r.message.id,
-        to: r.targetLabel.messageId,
+      targetLabels: r.many.label({
+        from: r.message.id.through(r.targetLabel.messageId),
+        to: r.label.id.through(r.targetLabel.labelId),
       }),
     },
   }),

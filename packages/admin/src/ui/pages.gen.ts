@@ -14,6 +14,8 @@ import type { getConfig as File_AuthedLabelsAssign_getConfig } from './pages/(au
 // prettier-ignore
 import type { getConfig as File_AuthedLabelsIndex_getConfig } from './pages/(authed)/labels/index';
 // prettier-ignore
+import type { getConfig as File_AuthedMessageIndex_getConfig } from './pages/(authed)/message/index';
+// prettier-ignore
 import type { getConfig as File_AuthedMessageSend_getConfig } from './pages/(authed)/message/send';
 // prettier-ignore
 import type { getConfig as File_AuthedSponsorsSponsorIdDelete_getConfig } from './pages/(authed)/sponsors/[sponsorId]/delete';
@@ -32,6 +34,7 @@ type Page =
 | ({ path: '/labels/assign' } & GetConfigResponse<typeof File_AuthedLabelsAssign_getConfig>)
 | ({ path: '/labels' } & GetConfigResponse<typeof File_AuthedLabelsIndex_getConfig>)
 | { path: '/labels/new'; render: 'dynamic' }
+| ({ path: '/message' } & GetConfigResponse<typeof File_AuthedMessageIndex_getConfig>)
 | ({ path: '/message/send' } & GetConfigResponse<typeof File_AuthedMessageSend_getConfig>)
 | { path: '/signout'; render: 'dynamic' }
 | ({ path: '/sponsors/[sponsorId]/delete' } & GetConfigResponse<typeof File_AuthedSponsorsSponsorIdDelete_getConfig>)

@@ -88,7 +88,7 @@ catalogs:
       specifier: 19.2.3
       version: 19.2.3
     react-icons:
-      specifier: 5.5.0
+      specifier: 'catalog:'
       version: 5.5.0
     react-server-dom-webpack:
       specifier: 19.2.3
@@ -259,6 +259,15 @@ importers:
       '@base-ui/react':
         specifier: 'catalog:'
         version: 1.0.0(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.7
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.3(@types/react@19.2.7)
+      date-fns:
+        specifier: 'catalog:'
+        version: 4.1.0
       react-icons:
         specifier: 'catalog:'
         version: 5.5.0(react@19.2.3)
