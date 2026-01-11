@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 
+type Timer = ReturnType<typeof setTimeout>
+
 export const useCopy = () => {
   const [hasCopied, setHasCopied] = useState(false)
-  const timerRef = useRef<number | null>(null)
+  const timerRef = useRef<Timer | null>(null)
 
   const copy = async (text: string) => {
     try {
