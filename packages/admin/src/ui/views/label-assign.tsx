@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckboxOption } from "broadcaster-components/control/checkbox.js"
+import { MultiCombobox } from "broadcaster-components/control/multi-combobox.js"
 import { Form } from "broadcaster-components/form/form.js"
 import { FormControl } from "broadcaster-components/form/form-control.js"
 import { SubmitButton } from "broadcaster-components/form/form-submit-button.js"
@@ -10,7 +10,7 @@ import { assignLabelsController } from "../../controller/label-assign.js"
 import { LabelAssignSchema } from "../../controller/label-assign-schema.js"
 import type { Label, Sponsor } from "../../domain/model/Sponsor.js"
 import { LabelDisplay } from "../components/label-display.js"
-import { SponsorsInput } from "../parts/SponsorsInput.js"
+import { SponsorInput } from "../parts/SponsorInput.js"
 
 type Props = {
   sponsors: Sponsor[]
@@ -19,11 +19,10 @@ type Props = {
 }
 
 export const LabelAssignForm = ({ labels, sponsors, onComplete }: Props) => {
-  const { values, setValue, getValidValues, registerMultipleCheckbox } =
-    useForm(LabelAssignSchema, {
-      sponsorIds: [] as string[],
-      labelIds: [] as string[],
-    })
+  const { values, setValue, getValidValues } = useForm(LabelAssignSchema, {
+    sponsorIds: [] as string[],
+    labelIds: [] as string[],
+  })
 
   const [_, startTransition] = useTransition()
 
@@ -38,29 +37,36 @@ export const LabelAssignForm = ({ labels, sponsors, onComplete }: Props) => {
     })
   }
 
+  const labelMap = new Map(labels.map((label) => [label.label, label]))
+
   return (
     <Form action={handleSubmit}>
       <FormControl label="追加するラベル" required>
-        <div className="flex flex-wrap gap-x-8 gap-y-4 rounded border border-slate-200 p-4">
-          {labels.map((label) => (
-            <CheckboxOption
-              key={label.id}
-              {...registerMultipleCheckbox("labelIds", label.id)}
-            >
-              <LabelDisplay label={label} />
-            </CheckboxOption>
-          ))}
-        </div>
-      </FormControl>
-
-      <FormControl label="対象" required>
-        <SponsorsInput
-          sponsorIds={values.sponsorIds}
-          onChangeSponsorIds={(vals) => setValue("sponsorIds", vals)}
-          labels={labels}
-          sponsors={sponsors}
+        <MultiCombobox
+          items={labels.map(({ label }) => ({
+            id: label,
+            label: label,
+          }))}
+          value={values.labelIds}
+          onValueChange={(value) => setValue("labelIds", value)}
+          renderItem={(item) => (
+            <LabelDisplay
+              key={item.id}
+              style="dot"
+              label={labelMap.get(item.label)!}
+            />
+          )}
+          placeholder="ラベル名"
         />
       </FormControl>
+      <FormControl label="対象スポンサー" required>
+        <SponsorInput
+          sponsors={sponsors}
+          value={values.sponsorIds}
+          onChange={(vals) => setValue("sponsorIds", vals)}
+        />
+      </FormControl>
+
       <div>
         <SubmitButton type="submit">追加</SubmitButton>
       </div>

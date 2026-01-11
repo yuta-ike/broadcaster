@@ -15,7 +15,7 @@ type Props = {
   sponsors: Sponsor[]
 }
 
-export const SponsorsInput = ({
+export const SponsorTargetInput = ({
   targetType,
   onChangeTargetType,
   sponsorIds,

@@ -14,7 +14,7 @@ import { CreateAndSendSlackMessageSchema } from "../../controller/slack-message-
 import type { Label, Sponsor } from "../../domain/model/Sponsor.js"
 import { VariableTable } from "../components/variable-list.js"
 import { ScheduleInput } from "../parts/ScheduleInput.js"
-import { SponsorsInput } from "../parts/SponsorsInput.js"
+import { SponsorTargetInput } from "../parts/SponsorTargetInput.js"
 
 const SLACK_WORKSPACE_DOMAIN = process.env.WAKU_PUBLIC_SLACK_WORKSPACE_DOMAIN
 if (SLACK_WORKSPACE_DOMAIN == null) {
@@ -96,7 +96,7 @@ export const SendMessageForm = ({
 
       {/* 送信先 */}
       <FormControl label="送信先" required>
-        <SponsorsInput
+        <SponsorTargetInput
           targetType={values.targetType}
           onChangeTargetType={(val) => setValue("targetType", val)}
           sponsorIds={values.sponsorIds}
