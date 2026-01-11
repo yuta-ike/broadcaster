@@ -1,6 +1,6 @@
-import { getScheduledMessages } from "../infrastructure/db/get-scheduled-messages"
-import { waitFor } from "../utils/wait"
-import { sendSlackMessage } from "./internal/send-slack-message"
+import { getScheduledMessages } from "../infrastructure/db/get-scheduled-messages.js"
+import { waitFor } from "../utils/wait.js"
+import { sendSlackMessage } from "./internal/send-slack-message.js"
 
 export const sendScheduledSlackMessageController = async () => {
   console.info("Start sending scheduled messages")
