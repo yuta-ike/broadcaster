@@ -1,8 +1,7 @@
 import { CheckboxOption } from "broadcaster-components/control/checkbox.js"
-import { Input } from "broadcaster-components/control/input.js"
+import { DatetimeInput } from "broadcaster-components/control/datetime-input.js"
 import { RadioPanel } from "broadcaster-components/control/radio-panel.js"
 import { FormControl } from "broadcaster-components/form/form-control.js"
-import { format } from "date-fns/format"
 import { useState } from "react"
 
 type Props = {
@@ -41,11 +40,10 @@ export const ScheduleInput = ({ scheduledAt, onChangeScheduledAt }: Props) => {
         {scheduledAt instanceof Date && (
           <div className="flex flex-col gap-4">
             <FormControl label="送信予約日時">
-              <Input
-                type="datetime-local"
+              <DatetimeInput
                 disabled={checkTommorowMorning}
-                value={format(scheduledAt, "yyyy-MM-dd'T'HH:mm")}
-                onChange={(e) => onChangeScheduledAt(new Date(e.target.value))}
+                value={scheduledAt}
+                onChange={onChangeScheduledAt}
               />
             </FormControl>
 

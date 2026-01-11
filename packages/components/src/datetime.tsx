@@ -1,4 +1,4 @@
-import { format as formatDate, formatDistanceToNowStrict } from "date-fns"
+import { format as formatDate, formatDistanceToNow } from "date-fns"
 import { ja } from "date-fns/locale"
 import { TbClock } from "react-icons/tb"
 import { Tooltip } from "./tooltip.js"
@@ -24,7 +24,7 @@ export const Datetime = ({ children, format, fallback }: Props) => {
           <TbClock />
           {format != null
             ? formatDate(children, format)
-            : formatDistanceToNowStrict(children, {
+            : formatDistanceToNow(children, {
                 locale: ja,
                 addSuffix: true,
               })}

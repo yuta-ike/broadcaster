@@ -16,6 +16,7 @@ export const listMessages = async (): Promise<MessageTemplateWithDetail[]> => {
         },
       },
     },
+    orderBy: (message, { desc }) => [desc(message.createdAt)],
   })
 
   return rows.map(
