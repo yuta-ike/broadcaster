@@ -1,0 +1,22 @@
+{
+  "name": "broadcaster-gas",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "rolldown -c rolldown.config.ts && cp appsscript.json dist/",
+    "deploy": "clasp push -f"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0",
+  "devDependencies": {
+    "@google/clasp": "catalog:",
+    "@types/google-apps-script": "catalog:",
+    "rolldown": "catalog:",
+    "typescript": "catalog:"
+  },
+  "volta": {
+    "extends": "../package.json"
+  }
+}
