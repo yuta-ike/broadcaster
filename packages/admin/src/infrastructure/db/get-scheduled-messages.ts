@@ -1,7 +1,10 @@
 import { db } from "broadcaster-db/db.js"
-import type { MessageTemplate } from "../../domain/model/Message.js"
+import type { MessageTemplateWithDetail } from "../../domain/model/Message.js"
+import { parseMessageRow } from "./helper/message.js"
 
-export const getScheduledMessages = async (): Promise<MessageTemplate[]> => {
+export const getScheduledMessages = async (): Promise<
+  MessageTemplateWithDetail[]
+> => {
   const rows = await db.query.message.findMany({
     where: {
       scheduledAt: {
@@ -13,27 +16,19 @@ export const getScheduledMessages = async (): Promise<MessageTemplate[]> => {
       },
     },
     with: {
-      targetLabels: true,
-      targetSponsors: true,
+      targetLabels: {
+        orderBy: (label, { asc }) => [asc(label.order)],
+      },
+      targetSponsors: {
+        with: {
+          slackUsers: true,
+          labels: {
+            orderBy: (label, { asc }) => [asc(label.order)],
+          },
+        },
+      },
     },
   })
 
-  return rows.map(
-    (row) =>
-      ({
-        message: row.message,
-        addMention: row.addMention,
-        scheduledAt: row.scheduledAt ?? "Immediate",
-        target:
-          0 < row.targetLabels.length
-            ? {
-                type: "Label",
-                labelIds: row.targetLabels.map((tl) => tl.labelId),
-              }
-            : {
-                type: "Sponsor",
-                sponsorIds: row.targetSponsors.map((ts) => ts.sponsorId),
-              },
-      }) satisfies MessageTemplate,
-  )
+  return rows.map(parseMessageRow)
 }

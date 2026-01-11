@@ -4,9 +4,15 @@ import {
   messageSponsorTable,
   messageTable,
 } from "broadcaster-db/schema.js"
-import type { MessageTemplate } from "../../domain/model/Message.js"
+import type {
+  MessageTemplate,
+  MessageTemplateWithDetail,
+} from "../../domain/model/Message.js"
+import { parseMessageRow } from "./helper/message.js"
 
-export const saveMessage = async (message: MessageTemplate) => {
+export const saveMessage = async (
+  message: MessageTemplate,
+): Promise<MessageTemplateWithDetail> => {
   return await db.transaction(async (tx) => {
     const rows = await tx
       .insert(messageTable)
@@ -37,6 +43,31 @@ export const saveMessage = async (message: MessageTemplate) => {
       )
     }
 
-    return messageId
+    // Query
+    const created = await db.query.message.findFirst({
+      where: {
+        scheduledAt: {
+          lte: new Date(),
+        },
+        sendImmediately: false,
+        sentAt: {
+          isNull: true,
+        },
+      },
+      with: {
+        targetLabels: {
+          orderBy: (label, { asc }) => [asc(label.order)],
+        },
+        targetSponsors: {
+          with: {
+            slackUsers: true,
+            labels: {
+              orderBy: (label, { asc }) => [asc(label.order)],
+            },
+          },
+        },
+      },
+    })
+    return parseMessageRow(created!)
   })
 }
