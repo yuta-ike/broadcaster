@@ -1,9 +1,9 @@
 import { createMiddleware } from "@tanstack/react-start"
-import { authMiddleware } from "./auth"
 import { getRequestHeader } from "@tanstack/react-start/server"
 import { randomUUID } from "node:crypto"
+import { authMiddleware } from "./auth"
 
-export const loggerMiddleware = createMiddleware()
+export const loggerMiddleware = createMiddleware({ type: "request" })
   .middleware([authMiddleware])
   .server(async ({ next, request, context }) => {
     const trace = getRequestHeader("traceparent") || randomUUID()
@@ -14,7 +14,7 @@ export const loggerMiddleware = createMiddleware()
         message: {
           url: request.url,
           user: {
-            id: context.user.id,
+            id: context?.user?.id,
           },
         },
         httpRequest: { requestMethod: request.method, requestUrl },
@@ -32,7 +32,7 @@ export const loggerMiddleware = createMiddleware()
           message: {
             url: request.url,
             user: {
-              id: context.user.id,
+              id: context?.user?.id,
             },
           },
           httpRequest: {
@@ -52,7 +52,7 @@ export const loggerMiddleware = createMiddleware()
           severity: "ERROR",
           message: {
             user: {
-              id: context.user.id,
+              id: context?.user?.id,
             },
             error: e instanceof Error ? { name: e.name, message: e.message } : e,
           },

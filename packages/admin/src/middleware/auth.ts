@@ -4,7 +4,7 @@ import { getRequestHeader } from "@tanstack/react-start/server"
 /**
  * oauth2-proxy が付与する HTTP header を参照する
  */
-export const authMiddleware = createMiddleware().server(async ({ next }) => {
+export const authMiddleware = createMiddleware({ type: "request" }).server(async ({ next }) => {
   const id = getRequestHeader("X-Forwarded-User") || process.env.LOCAL_USER_ID
   const email = getRequestHeader("X-Forwarded-Email") || process.env.LOCAL_USER_EMAIL
 
