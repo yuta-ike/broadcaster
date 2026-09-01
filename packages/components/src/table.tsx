@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react"
+import type { ComponentProps, Ref } from "react"
 
 const Root = (props: ComponentProps<"table">) => (
   <table
@@ -14,11 +14,16 @@ const TFoot = ({ children }: { children?: React.ReactNode }) => <tfoot>{children
 const Tr = ({
   children,
   highlight = false,
+  ref,
+  ...props
 }: {
   children?: React.ReactNode
   highlight?: boolean
-}) => (
+  ref?: Ref<HTMLTableRowElement>
+} & ComponentProps<"tr">) => (
   <tr
+    {...props}
+    ref={ref}
     data-highlight={highlight ? "true" : undefined}
     className="even:bg-slate-100 hover:bg-slate-200 data-highlight:bg-orange-100"
   >
