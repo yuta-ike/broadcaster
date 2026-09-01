@@ -17,12 +17,15 @@ export const listSponsors = async (): Promise<Sponsor[]> => {
       id: doc._id,
       name: doc.name,
       readableId: doc.readableId,
-      slackChannel: {
-        id: doc.slackChannel.id,
-        name: doc.slackChannel.name,
-        kind: doc.slackChannel.kind,
-        isExtShared: doc.slackChannel.isExtShared,
-      },
+      slackChannel:
+        doc.slackChannel == null
+          ? undefined
+          : {
+              id: doc.slackChannel.id,
+              name: doc.slackChannel.name,
+              kind: doc.slackChannel.kind,
+              isExtShared: doc.slackChannel.isExtShared,
+            },
       slackUsers: [],
       labels: doc.labelIds
         .map((labelId) => {

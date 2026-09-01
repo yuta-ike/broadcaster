@@ -17,12 +17,14 @@ export const SponsorCollection = {
     _id: z.string(),
     name: z.string(),
     readableId: z.string(),
-    slackChannel: z.object({
-      id: z.string(),
-      name: z.string(),
-      kind: z.enum(["public", "private"]),
-      isExtShared: z.boolean(),
-    }),
+    slackChannel: z
+      .object({
+        id: z.string(),
+        name: z.string(),
+        kind: z.enum(["public", "private"]),
+        isExtShared: z.boolean(),
+      })
+      .nullable(),
     slackUserIds: z.array(z.string()),
     labelIds: z.array(z.string()),
   }),
