@@ -62,7 +62,7 @@ export const listMessages = async (): Promise<MessageTemplateWithDetail[]> => {
     message: row.message,
     addMention: row.addMention,
     scheduledAt: new Date(row.scheduledAt),
-    sentAt: row.sentAt == null ? null : new Date(),
+    sentAt: row.sentAt == null ? null : new Date(row.sentAt),
     target:
       row.target.type === "Sponsor"
         ? {

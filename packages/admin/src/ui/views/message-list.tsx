@@ -3,7 +3,6 @@ import { MaxWidth } from "broadcaster-components/max-width.js"
 import { Table } from "broadcaster-components/table.js"
 import type { MessageTemplateWithDetail } from "../../domain/model/Message.js"
 import { LabelDisplay } from "../components/label-display.js"
-import { isFuture } from "date-fns"
 
 type MessageListViewProps = {
   messages: MessageTemplateWithDetail[]
@@ -23,10 +22,10 @@ export const MessageListView = ({ messages }: MessageListViewProps) => {
       </Table.THead>
       <Table.TBody>
         {messages.map((message) => (
-          <Table.Tr key={message.id} highlight={isFuture(message.scheduledAt)}>
+          <Table.Tr key={message.id} highlight={message.sentAt == null}>
             {/* ステータス */}
             <Table.Td>
-              {isFuture(message.scheduledAt) ? (
+              {message.sentAt == null ? (
                 <div className="border border-orange-400 bg-orange-200 rounded-full w-max px-2 py-1 leading-none text-orange-700 text-xs">
                   未送信
                 </div>

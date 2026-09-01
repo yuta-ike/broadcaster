@@ -7,7 +7,7 @@ export const getScheduledMessages = async (): Promise<MessageTemplateWithDetail[
     .collection<MessageCollection>(MessageCollection.name)
     .find({
       scheduledAt: {
-        $gt: new Date().toISOString(),
+        $lte: new Date().toISOString(),
       },
       sentAt: null,
     })
