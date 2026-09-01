@@ -19,9 +19,3 @@ pnpm dev
 ```sh
 docker compose up -d
 ```
-
-## デプロイ
-
-```sh
-pnpm exec vercel deploy
-```

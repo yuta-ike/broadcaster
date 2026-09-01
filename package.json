@@ -12,11 +12,9 @@
     "fix": "pnpm run /.+:fix/"
   },
   "devDependencies": {
-    "emulate": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
-    "oxlint-tsgolint": "catalog:",
-    "vercel": "catalog:"
+    "oxlint-tsgolint": "catalog:"
   },
   "devEngines": {
     "runtime": {
