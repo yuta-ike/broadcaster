@@ -1,8 +1,9 @@
 import { Datetime, FORMATS } from "broadcaster-components/datetime.js"
-import { MaxWidth } from "broadcaster-components/max-width.js"
 import { Table } from "broadcaster-components/table.js"
 import type { MessageTemplateWithDetail } from "../../domain/model/Message.js"
 import { LabelDisplay } from "../components/label-display.js"
+import { UnstyledSlackPreview } from "broadcaster-components/slack-preview.js"
+import { parseMrkdwn } from "slack-parser/index.js"
 
 type MessageListViewProps = {
   messages: MessageTemplateWithDetail[]
@@ -38,9 +39,9 @@ export const MessageListView = ({ messages }: MessageListViewProps) => {
 
             {/* メッセージ */}
             <Table.Td>
-              <MaxWidth maxWidth={300} maxLine={3} className="text-xs">
-                {message.message}
-              </MaxWidth>
+              <div className="overflow-y-auto max-h-[250px]">
+                <UnstyledSlackPreview message={parseMrkdwn(message.message).document} />
+              </div>
             </Table.Td>
 
             {/* 送信対象 */}
