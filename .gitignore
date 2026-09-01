@@ -7,7 +7,5 @@ dist
 .DS_Store
 *.pem
 .idea/
-.vercel/
-.slack/apps.dev.json
 .output
 .pnpm-store
