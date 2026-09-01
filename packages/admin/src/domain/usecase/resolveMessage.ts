@@ -11,8 +11,8 @@ type Variable = z.infer<typeof variablesSchema>
 export const resolveMessageTemplate = (messageTemplate: string, variables: Variable) => {
   const templateVars = variablesSchema.parse(variables)
   const resolved = messageTemplate
-    .replaceAll(/{{\s+mentions\s+}}/, templateVars.mentions.join(" "))
-    .replaceAll(/{{\s+sponsorName\s+}}/, templateVars.sponsorName)
-    .replaceAll(/{{\s+planName\s+}}/, templateVars.planName)
+    .replaceAll(/{{\s+mentions\s+}}/g, templateVars.mentions.join(" "))
+    .replaceAll(/{{\s+sponsorName\s+}}/g, templateVars.sponsorName)
+    .replaceAll(/{{\s+planName\s+}}/g, templateVars.planName)
   return resolved
 }

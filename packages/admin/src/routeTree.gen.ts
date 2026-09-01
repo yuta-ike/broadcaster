@@ -8,237 +8,234 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as AuthedRouteImport } from './routes/_authed'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthedSlackRouteImport } from './routes/_authed.slack'
-import { Route as AuthedSponsorsIndexRouteImport } from './routes/_authed.sponsors.index'
-import { Route as AuthedMessageIndexRouteImport } from './routes/_authed.message.index'
-import { Route as AuthedLabelsIndexRouteImport } from './routes/_authed.labels.index'
-import { Route as ApiCronSendMessageRouteImport } from './routes/api/cron/send-message'
-import { Route as AuthedSponsorsNewRouteImport } from './routes/_authed.sponsors.new'
-import { Route as AuthedMessageSendRouteImport } from './routes/_authed.message.send'
-import { Route as AuthedLabelsNewRouteImport } from './routes/_authed.labels.new'
-import { Route as AuthedLabelsAssignRouteImport } from './routes/_authed.labels.assign'
-import { Route as AuthedChannelChannelRouteImport } from './routes/_authed.channel.$channel'
-import { Route as ApiAuthSlackCallbackRouteImport } from './routes/api/auth/slack/callback'
-import { Route as ApiAuthSlackAuthorizeRouteImport } from './routes/api/auth/slack/authorize'
-import { Route as AuthedSponsorsSponsorIdEditRouteImport } from './routes/_authed.sponsors.$sponsorId.edit'
-import { Route as AuthedSponsorsSponsorIdDeleteRouteImport } from './routes/_authed.sponsors.$sponsorId.delete'
-import { Route as AuthedLabelsLabelIdEditRouteImport } from './routes/_authed.labels.$labelId.edit'
-import { Route as AuthedLabelsLabelIdDeleteRouteImport } from './routes/_authed.labels.$labelId.delete'
+import { Route as rootRouteImport } from "./routes/__root"
+import { Route as AuthedRouteImport } from "./routes/_authed"
+import { Route as IndexRouteImport } from "./routes/index"
+import { Route as AuthedSlackRouteImport } from "./routes/_authed.slack"
+import { Route as AuthedSponsorsIndexRouteImport } from "./routes/_authed.sponsors.index"
+import { Route as AuthedMessageIndexRouteImport } from "./routes/_authed.message.index"
+import { Route as AuthedLabelsIndexRouteImport } from "./routes/_authed.labels.index"
+import { Route as ApiCronSendMessageRouteImport } from "./routes/api/cron/send-message"
+import { Route as AuthedSponsorsNewRouteImport } from "./routes/_authed.sponsors.new"
+import { Route as AuthedMessageSendRouteImport } from "./routes/_authed.message.send"
+import { Route as AuthedLabelsNewRouteImport } from "./routes/_authed.labels.new"
+import { Route as AuthedLabelsAssignRouteImport } from "./routes/_authed.labels.assign"
+import { Route as AuthedChannelChannelRouteImport } from "./routes/_authed.channel.$channel"
+import { Route as ApiAuthSlackCallbackRouteImport } from "./routes/api/auth/slack/callback"
+import { Route as ApiAuthSlackAuthorizeRouteImport } from "./routes/api/auth/slack/authorize"
+import { Route as AuthedSponsorsSponsorIdEditRouteImport } from "./routes/_authed.sponsors.$sponsorId.edit"
+import { Route as AuthedSponsorsSponsorIdDeleteRouteImport } from "./routes/_authed.sponsors.$sponsorId.delete"
+import { Route as AuthedLabelsLabelIdEditRouteImport } from "./routes/_authed.labels.$labelId.edit"
+import { Route as AuthedLabelsLabelIdDeleteRouteImport } from "./routes/_authed.labels.$labelId.delete"
 
 const AuthedRoute = AuthedRouteImport.update({
-  id: '/_authed',
+  id: "/_authed",
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedSlackRoute = AuthedSlackRouteImport.update({
-  id: '/slack',
-  path: '/slack',
+  id: "/slack",
+  path: "/slack",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedSponsorsIndexRoute = AuthedSponsorsIndexRouteImport.update({
-  id: '/sponsors/',
-  path: '/sponsors/',
+  id: "/sponsors/",
+  path: "/sponsors/",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedMessageIndexRoute = AuthedMessageIndexRouteImport.update({
-  id: '/message/',
-  path: '/message/',
+  id: "/message/",
+  path: "/message/",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedLabelsIndexRoute = AuthedLabelsIndexRouteImport.update({
-  id: '/labels/',
-  path: '/labels/',
+  id: "/labels/",
+  path: "/labels/",
   getParentRoute: () => AuthedRoute,
 } as any)
 const ApiCronSendMessageRoute = ApiCronSendMessageRouteImport.update({
-  id: '/api/cron/send-message',
-  path: '/api/cron/send-message',
+  id: "/api/cron/send-message",
+  path: "/api/cron/send-message",
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedSponsorsNewRoute = AuthedSponsorsNewRouteImport.update({
-  id: '/sponsors/new',
-  path: '/sponsors/new',
+  id: "/sponsors/new",
+  path: "/sponsors/new",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedMessageSendRoute = AuthedMessageSendRouteImport.update({
-  id: '/message/send',
-  path: '/message/send',
+  id: "/message/send",
+  path: "/message/send",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedLabelsNewRoute = AuthedLabelsNewRouteImport.update({
-  id: '/labels/new',
-  path: '/labels/new',
+  id: "/labels/new",
+  path: "/labels/new",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedLabelsAssignRoute = AuthedLabelsAssignRouteImport.update({
-  id: '/labels/assign',
-  path: '/labels/assign',
+  id: "/labels/assign",
+  path: "/labels/assign",
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedChannelChannelRoute = AuthedChannelChannelRouteImport.update({
-  id: '/channel/$channel',
-  path: '/channel/$channel',
+  id: "/channel/$channel",
+  path: "/channel/$channel",
   getParentRoute: () => AuthedRoute,
 } as any)
 const ApiAuthSlackCallbackRoute = ApiAuthSlackCallbackRouteImport.update({
-  id: '/api/auth/slack/callback',
-  path: '/api/auth/slack/callback',
+  id: "/api/auth/slack/callback",
+  path: "/api/auth/slack/callback",
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthSlackAuthorizeRoute = ApiAuthSlackAuthorizeRouteImport.update({
-  id: '/api/auth/slack/authorize',
-  path: '/api/auth/slack/authorize',
+  id: "/api/auth/slack/authorize",
+  path: "/api/auth/slack/authorize",
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthedSponsorsSponsorIdEditRoute =
-  AuthedSponsorsSponsorIdEditRouteImport.update({
-    id: '/sponsors/$sponsorId/edit',
-    path: '/sponsors/$sponsorId/edit',
-    getParentRoute: () => AuthedRoute,
-  } as any)
-const AuthedSponsorsSponsorIdDeleteRoute =
-  AuthedSponsorsSponsorIdDeleteRouteImport.update({
-    id: '/sponsors/$sponsorId/delete',
-    path: '/sponsors/$sponsorId/delete',
-    getParentRoute: () => AuthedRoute,
-  } as any)
-const AuthedLabelsLabelIdEditRoute = AuthedLabelsLabelIdEditRouteImport.update({
-  id: '/labels/$labelId/edit',
-  path: '/labels/$labelId/edit',
+const AuthedSponsorsSponsorIdEditRoute = AuthedSponsorsSponsorIdEditRouteImport.update({
+  id: "/sponsors/$sponsorId/edit",
+  path: "/sponsors/$sponsorId/edit",
   getParentRoute: () => AuthedRoute,
 } as any)
-const AuthedLabelsLabelIdDeleteRoute =
-  AuthedLabelsLabelIdDeleteRouteImport.update({
-    id: '/labels/$labelId/delete',
-    path: '/labels/$labelId/delete',
-    getParentRoute: () => AuthedRoute,
-  } as any)
+const AuthedSponsorsSponsorIdDeleteRoute = AuthedSponsorsSponsorIdDeleteRouteImport.update({
+  id: "/sponsors/$sponsorId/delete",
+  path: "/sponsors/$sponsorId/delete",
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedLabelsLabelIdEditRoute = AuthedLabelsLabelIdEditRouteImport.update({
+  id: "/labels/$labelId/edit",
+  path: "/labels/$labelId/edit",
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedLabelsLabelIdDeleteRoute = AuthedLabelsLabelIdDeleteRouteImport.update({
+  id: "/labels/$labelId/delete",
+  path: "/labels/$labelId/delete",
+  getParentRoute: () => AuthedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/slack': typeof AuthedSlackRoute
-  '/channel/$channel': typeof AuthedChannelChannelRoute
-  '/labels/assign': typeof AuthedLabelsAssignRoute
-  '/labels/new': typeof AuthedLabelsNewRoute
-  '/message/send': typeof AuthedMessageSendRoute
-  '/sponsors/new': typeof AuthedSponsorsNewRoute
-  '/api/cron/send-message': typeof ApiCronSendMessageRoute
-  '/labels/': typeof AuthedLabelsIndexRoute
-  '/message/': typeof AuthedMessageIndexRoute
-  '/sponsors/': typeof AuthedSponsorsIndexRoute
-  '/labels/$labelId/delete': typeof AuthedLabelsLabelIdDeleteRoute
-  '/labels/$labelId/edit': typeof AuthedLabelsLabelIdEditRoute
-  '/sponsors/$sponsorId/delete': typeof AuthedSponsorsSponsorIdDeleteRoute
-  '/sponsors/$sponsorId/edit': typeof AuthedSponsorsSponsorIdEditRoute
-  '/api/auth/slack/authorize': typeof ApiAuthSlackAuthorizeRoute
-  '/api/auth/slack/callback': typeof ApiAuthSlackCallbackRoute
+  "/": typeof IndexRoute
+  "/slack": typeof AuthedSlackRoute
+  "/channel/$channel": typeof AuthedChannelChannelRoute
+  "/labels/assign": typeof AuthedLabelsAssignRoute
+  "/labels/new": typeof AuthedLabelsNewRoute
+  "/message/send": typeof AuthedMessageSendRoute
+  "/sponsors/new": typeof AuthedSponsorsNewRoute
+  "/api/cron/send-message": typeof ApiCronSendMessageRoute
+  "/labels/": typeof AuthedLabelsIndexRoute
+  "/message/": typeof AuthedMessageIndexRoute
+  "/sponsors/": typeof AuthedSponsorsIndexRoute
+  "/labels/$labelId/delete": typeof AuthedLabelsLabelIdDeleteRoute
+  "/labels/$labelId/edit": typeof AuthedLabelsLabelIdEditRoute
+  "/sponsors/$sponsorId/delete": typeof AuthedSponsorsSponsorIdDeleteRoute
+  "/sponsors/$sponsorId/edit": typeof AuthedSponsorsSponsorIdEditRoute
+  "/api/auth/slack/authorize": typeof ApiAuthSlackAuthorizeRoute
+  "/api/auth/slack/callback": typeof ApiAuthSlackCallbackRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/slack': typeof AuthedSlackRoute
-  '/channel/$channel': typeof AuthedChannelChannelRoute
-  '/labels/assign': typeof AuthedLabelsAssignRoute
-  '/labels/new': typeof AuthedLabelsNewRoute
-  '/message/send': typeof AuthedMessageSendRoute
-  '/sponsors/new': typeof AuthedSponsorsNewRoute
-  '/api/cron/send-message': typeof ApiCronSendMessageRoute
-  '/labels': typeof AuthedLabelsIndexRoute
-  '/message': typeof AuthedMessageIndexRoute
-  '/sponsors': typeof AuthedSponsorsIndexRoute
-  '/labels/$labelId/delete': typeof AuthedLabelsLabelIdDeleteRoute
-  '/labels/$labelId/edit': typeof AuthedLabelsLabelIdEditRoute
-  '/sponsors/$sponsorId/delete': typeof AuthedSponsorsSponsorIdDeleteRoute
-  '/sponsors/$sponsorId/edit': typeof AuthedSponsorsSponsorIdEditRoute
-  '/api/auth/slack/authorize': typeof ApiAuthSlackAuthorizeRoute
-  '/api/auth/slack/callback': typeof ApiAuthSlackCallbackRoute
+  "/": typeof IndexRoute
+  "/slack": typeof AuthedSlackRoute
+  "/channel/$channel": typeof AuthedChannelChannelRoute
+  "/labels/assign": typeof AuthedLabelsAssignRoute
+  "/labels/new": typeof AuthedLabelsNewRoute
+  "/message/send": typeof AuthedMessageSendRoute
+  "/sponsors/new": typeof AuthedSponsorsNewRoute
+  "/api/cron/send-message": typeof ApiCronSendMessageRoute
+  "/labels": typeof AuthedLabelsIndexRoute
+  "/message": typeof AuthedMessageIndexRoute
+  "/sponsors": typeof AuthedSponsorsIndexRoute
+  "/labels/$labelId/delete": typeof AuthedLabelsLabelIdDeleteRoute
+  "/labels/$labelId/edit": typeof AuthedLabelsLabelIdEditRoute
+  "/sponsors/$sponsorId/delete": typeof AuthedSponsorsSponsorIdDeleteRoute
+  "/sponsors/$sponsorId/edit": typeof AuthedSponsorsSponsorIdEditRoute
+  "/api/auth/slack/authorize": typeof ApiAuthSlackAuthorizeRoute
+  "/api/auth/slack/callback": typeof ApiAuthSlackCallbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/_authed': typeof AuthedRouteWithChildren
-  '/_authed/slack': typeof AuthedSlackRoute
-  '/_authed/channel/$channel': typeof AuthedChannelChannelRoute
-  '/_authed/labels/assign': typeof AuthedLabelsAssignRoute
-  '/_authed/labels/new': typeof AuthedLabelsNewRoute
-  '/_authed/message/send': typeof AuthedMessageSendRoute
-  '/_authed/sponsors/new': typeof AuthedSponsorsNewRoute
-  '/api/cron/send-message': typeof ApiCronSendMessageRoute
-  '/_authed/labels/': typeof AuthedLabelsIndexRoute
-  '/_authed/message/': typeof AuthedMessageIndexRoute
-  '/_authed/sponsors/': typeof AuthedSponsorsIndexRoute
-  '/_authed/labels/$labelId/delete': typeof AuthedLabelsLabelIdDeleteRoute
-  '/_authed/labels/$labelId/edit': typeof AuthedLabelsLabelIdEditRoute
-  '/_authed/sponsors/$sponsorId/delete': typeof AuthedSponsorsSponsorIdDeleteRoute
-  '/_authed/sponsors/$sponsorId/edit': typeof AuthedSponsorsSponsorIdEditRoute
-  '/api/auth/slack/authorize': typeof ApiAuthSlackAuthorizeRoute
-  '/api/auth/slack/callback': typeof ApiAuthSlackCallbackRoute
+  "/": typeof IndexRoute
+  "/_authed": typeof AuthedRouteWithChildren
+  "/_authed/slack": typeof AuthedSlackRoute
+  "/_authed/channel/$channel": typeof AuthedChannelChannelRoute
+  "/_authed/labels/assign": typeof AuthedLabelsAssignRoute
+  "/_authed/labels/new": typeof AuthedLabelsNewRoute
+  "/_authed/message/send": typeof AuthedMessageSendRoute
+  "/_authed/sponsors/new": typeof AuthedSponsorsNewRoute
+  "/api/cron/send-message": typeof ApiCronSendMessageRoute
+  "/_authed/labels/": typeof AuthedLabelsIndexRoute
+  "/_authed/message/": typeof AuthedMessageIndexRoute
+  "/_authed/sponsors/": typeof AuthedSponsorsIndexRoute
+  "/_authed/labels/$labelId/delete": typeof AuthedLabelsLabelIdDeleteRoute
+  "/_authed/labels/$labelId/edit": typeof AuthedLabelsLabelIdEditRoute
+  "/_authed/sponsors/$sponsorId/delete": typeof AuthedSponsorsSponsorIdDeleteRoute
+  "/_authed/sponsors/$sponsorId/edit": typeof AuthedSponsorsSponsorIdEditRoute
+  "/api/auth/slack/authorize": typeof ApiAuthSlackAuthorizeRoute
+  "/api/auth/slack/callback": typeof ApiAuthSlackCallbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/slack'
-    | '/channel/$channel'
-    | '/labels/assign'
-    | '/labels/new'
-    | '/message/send'
-    | '/sponsors/new'
-    | '/api/cron/send-message'
-    | '/labels/'
-    | '/message/'
-    | '/sponsors/'
-    | '/labels/$labelId/delete'
-    | '/labels/$labelId/edit'
-    | '/sponsors/$sponsorId/delete'
-    | '/sponsors/$sponsorId/edit'
-    | '/api/auth/slack/authorize'
-    | '/api/auth/slack/callback'
+    | "/"
+    | "/slack"
+    | "/channel/$channel"
+    | "/labels/assign"
+    | "/labels/new"
+    | "/message/send"
+    | "/sponsors/new"
+    | "/api/cron/send-message"
+    | "/labels/"
+    | "/message/"
+    | "/sponsors/"
+    | "/labels/$labelId/delete"
+    | "/labels/$labelId/edit"
+    | "/sponsors/$sponsorId/delete"
+    | "/sponsors/$sponsorId/edit"
+    | "/api/auth/slack/authorize"
+    | "/api/auth/slack/callback"
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/slack'
-    | '/channel/$channel'
-    | '/labels/assign'
-    | '/labels/new'
-    | '/message/send'
-    | '/sponsors/new'
-    | '/api/cron/send-message'
-    | '/labels'
-    | '/message'
-    | '/sponsors'
-    | '/labels/$labelId/delete'
-    | '/labels/$labelId/edit'
-    | '/sponsors/$sponsorId/delete'
-    | '/sponsors/$sponsorId/edit'
-    | '/api/auth/slack/authorize'
-    | '/api/auth/slack/callback'
+    | "/"
+    | "/slack"
+    | "/channel/$channel"
+    | "/labels/assign"
+    | "/labels/new"
+    | "/message/send"
+    | "/sponsors/new"
+    | "/api/cron/send-message"
+    | "/labels"
+    | "/message"
+    | "/sponsors"
+    | "/labels/$labelId/delete"
+    | "/labels/$labelId/edit"
+    | "/sponsors/$sponsorId/delete"
+    | "/sponsors/$sponsorId/edit"
+    | "/api/auth/slack/authorize"
+    | "/api/auth/slack/callback"
   id:
-    | '__root__'
-    | '/'
-    | '/_authed'
-    | '/_authed/slack'
-    | '/_authed/channel/$channel'
-    | '/_authed/labels/assign'
-    | '/_authed/labels/new'
-    | '/_authed/message/send'
-    | '/_authed/sponsors/new'
-    | '/api/cron/send-message'
-    | '/_authed/labels/'
-    | '/_authed/message/'
-    | '/_authed/sponsors/'
-    | '/_authed/labels/$labelId/delete'
-    | '/_authed/labels/$labelId/edit'
-    | '/_authed/sponsors/$sponsorId/delete'
-    | '/_authed/sponsors/$sponsorId/edit'
-    | '/api/auth/slack/authorize'
-    | '/api/auth/slack/callback'
+    | "__root__"
+    | "/"
+    | "/_authed"
+    | "/_authed/slack"
+    | "/_authed/channel/$channel"
+    | "/_authed/labels/assign"
+    | "/_authed/labels/new"
+    | "/_authed/message/send"
+    | "/_authed/sponsors/new"
+    | "/api/cron/send-message"
+    | "/_authed/labels/"
+    | "/_authed/message/"
+    | "/_authed/sponsors/"
+    | "/_authed/labels/$labelId/delete"
+    | "/_authed/labels/$labelId/edit"
+    | "/_authed/sponsors/$sponsorId/delete"
+    | "/_authed/sponsors/$sponsorId/edit"
+    | "/api/auth/slack/authorize"
+    | "/api/auth/slack/callback"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -249,131 +246,131 @@ export interface RootRouteChildren {
   ApiAuthSlackCallbackRoute: typeof ApiAuthSlackCallbackRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/_authed': {
-      id: '/_authed'
-      path: ''
-      fullPath: '/'
+    "/_authed": {
+      id: "/_authed"
+      path: ""
+      fullPath: "/"
       preLoaderRoute: typeof AuthedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
+    "/": {
+      id: "/"
+      path: "/"
+      fullPath: "/"
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed/slack': {
-      id: '/_authed/slack'
-      path: '/slack'
-      fullPath: '/slack'
+    "/_authed/slack": {
+      id: "/_authed/slack"
+      path: "/slack"
+      fullPath: "/slack"
       preLoaderRoute: typeof AuthedSlackRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/sponsors/': {
-      id: '/_authed/sponsors/'
-      path: '/sponsors'
-      fullPath: '/sponsors/'
+    "/_authed/sponsors/": {
+      id: "/_authed/sponsors/"
+      path: "/sponsors"
+      fullPath: "/sponsors/"
       preLoaderRoute: typeof AuthedSponsorsIndexRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/message/': {
-      id: '/_authed/message/'
-      path: '/message'
-      fullPath: '/message/'
+    "/_authed/message/": {
+      id: "/_authed/message/"
+      path: "/message"
+      fullPath: "/message/"
       preLoaderRoute: typeof AuthedMessageIndexRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/labels/': {
-      id: '/_authed/labels/'
-      path: '/labels'
-      fullPath: '/labels/'
+    "/_authed/labels/": {
+      id: "/_authed/labels/"
+      path: "/labels"
+      fullPath: "/labels/"
       preLoaderRoute: typeof AuthedLabelsIndexRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/api/cron/send-message': {
-      id: '/api/cron/send-message'
-      path: '/api/cron/send-message'
-      fullPath: '/api/cron/send-message'
+    "/api/cron/send-message": {
+      id: "/api/cron/send-message"
+      path: "/api/cron/send-message"
+      fullPath: "/api/cron/send-message"
       preLoaderRoute: typeof ApiCronSendMessageRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed/sponsors/new': {
-      id: '/_authed/sponsors/new'
-      path: '/sponsors/new'
-      fullPath: '/sponsors/new'
+    "/_authed/sponsors/new": {
+      id: "/_authed/sponsors/new"
+      path: "/sponsors/new"
+      fullPath: "/sponsors/new"
       preLoaderRoute: typeof AuthedSponsorsNewRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/message/send': {
-      id: '/_authed/message/send'
-      path: '/message/send'
-      fullPath: '/message/send'
+    "/_authed/message/send": {
+      id: "/_authed/message/send"
+      path: "/message/send"
+      fullPath: "/message/send"
       preLoaderRoute: typeof AuthedMessageSendRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/labels/new': {
-      id: '/_authed/labels/new'
-      path: '/labels/new'
-      fullPath: '/labels/new'
+    "/_authed/labels/new": {
+      id: "/_authed/labels/new"
+      path: "/labels/new"
+      fullPath: "/labels/new"
       preLoaderRoute: typeof AuthedLabelsNewRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/labels/assign': {
-      id: '/_authed/labels/assign'
-      path: '/labels/assign'
-      fullPath: '/labels/assign'
+    "/_authed/labels/assign": {
+      id: "/_authed/labels/assign"
+      path: "/labels/assign"
+      fullPath: "/labels/assign"
       preLoaderRoute: typeof AuthedLabelsAssignRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/channel/$channel': {
-      id: '/_authed/channel/$channel'
-      path: '/channel/$channel'
-      fullPath: '/channel/$channel'
+    "/_authed/channel/$channel": {
+      id: "/_authed/channel/$channel"
+      path: "/channel/$channel"
+      fullPath: "/channel/$channel"
       preLoaderRoute: typeof AuthedChannelChannelRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/api/auth/slack/callback': {
-      id: '/api/auth/slack/callback'
-      path: '/api/auth/slack/callback'
-      fullPath: '/api/auth/slack/callback'
+    "/api/auth/slack/callback": {
+      id: "/api/auth/slack/callback"
+      path: "/api/auth/slack/callback"
+      fullPath: "/api/auth/slack/callback"
       preLoaderRoute: typeof ApiAuthSlackCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/auth/slack/authorize': {
-      id: '/api/auth/slack/authorize'
-      path: '/api/auth/slack/authorize'
-      fullPath: '/api/auth/slack/authorize'
+    "/api/auth/slack/authorize": {
+      id: "/api/auth/slack/authorize"
+      path: "/api/auth/slack/authorize"
+      fullPath: "/api/auth/slack/authorize"
       preLoaderRoute: typeof ApiAuthSlackAuthorizeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed/sponsors/$sponsorId/edit': {
-      id: '/_authed/sponsors/$sponsorId/edit'
-      path: '/sponsors/$sponsorId/edit'
-      fullPath: '/sponsors/$sponsorId/edit'
+    "/_authed/sponsors/$sponsorId/edit": {
+      id: "/_authed/sponsors/$sponsorId/edit"
+      path: "/sponsors/$sponsorId/edit"
+      fullPath: "/sponsors/$sponsorId/edit"
       preLoaderRoute: typeof AuthedSponsorsSponsorIdEditRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/sponsors/$sponsorId/delete': {
-      id: '/_authed/sponsors/$sponsorId/delete'
-      path: '/sponsors/$sponsorId/delete'
-      fullPath: '/sponsors/$sponsorId/delete'
+    "/_authed/sponsors/$sponsorId/delete": {
+      id: "/_authed/sponsors/$sponsorId/delete"
+      path: "/sponsors/$sponsorId/delete"
+      fullPath: "/sponsors/$sponsorId/delete"
       preLoaderRoute: typeof AuthedSponsorsSponsorIdDeleteRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/labels/$labelId/edit': {
-      id: '/_authed/labels/$labelId/edit'
-      path: '/labels/$labelId/edit'
-      fullPath: '/labels/$labelId/edit'
+    "/_authed/labels/$labelId/edit": {
+      id: "/_authed/labels/$labelId/edit"
+      path: "/labels/$labelId/edit"
+      fullPath: "/labels/$labelId/edit"
       preLoaderRoute: typeof AuthedLabelsLabelIdEditRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/_authed/labels/$labelId/delete': {
-      id: '/_authed/labels/$labelId/delete'
-      path: '/labels/$labelId/delete'
-      fullPath: '/labels/$labelId/delete'
+    "/_authed/labels/$labelId/delete": {
+      id: "/_authed/labels/$labelId/delete"
+      path: "/labels/$labelId/delete"
+      fullPath: "/labels/$labelId/delete"
       preLoaderRoute: typeof AuthedLabelsLabelIdDeleteRouteImport
       parentRoute: typeof AuthedRoute
     }
@@ -412,8 +409,7 @@ const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedSponsorsSponsorIdEditRoute: AuthedSponsorsSponsorIdEditRoute,
 }
 
-const AuthedRouteWithChildren =
-  AuthedRoute._addFileChildren(AuthedRouteChildren)
+const AuthedRouteWithChildren = AuthedRoute._addFileChildren(AuthedRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -426,9 +422,9 @@ export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
+import type { getRouter } from "./router.tsx"
+import type { startInstance } from "./start.ts"
+declare module "@tanstack/react-start" {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>

@@ -1,4 +1,3 @@
-import { getSlackAccessToken } from "../../controller/slack-access-token-get"
 import type { SlackChannel } from "../../domain/model/SlackChannel"
 import { mongoDb, SponsorCollection } from "../../libs/db"
 import { getLabelsByNames } from "./get-label-by-name"

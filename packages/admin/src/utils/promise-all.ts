@@ -4,6 +4,7 @@ export const promiseAllMap = async <
   input: PromiseMap,
 ): Promise<{ [K in keyof PromiseMap]: Awaited<PromiseMap[K]> }> => {
   const entries = Object.entries(input)
+  // oxlint-disable-next-line typescript/await-thenable
   const results = await Promise.all(entries.map(([_, promise]) => promise))
   return entries.reduce(
     (acc, [key], index) => {

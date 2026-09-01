@@ -11,8 +11,8 @@ export const CopyButton = ({ text }: Props) => {
   const [isCopied, setIsCopied] = useState(false)
   const timerRef = useRef<Timer | null>(null)
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigator.clipboard.writeText(text)
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    await navigator.clipboard.writeText(text)
     setIsCopied(true)
     if (timerRef.current) {
       clearTimeout(timerRef.current)

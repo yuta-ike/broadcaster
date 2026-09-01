@@ -9,6 +9,7 @@ export const safeLoop = async <Param extends {}>(
       console.error("Exceeded maximum iterations in safeLoop")
       break
     }
+    // oxlint-disable-next-line typescript/await-thenable
     param = await callback(param)
     if (param == null) {
       break

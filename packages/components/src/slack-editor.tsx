@@ -13,26 +13,18 @@ type MessageRef = {
 type Props = Omit<ComponentProps<typeof MultiInput>, "onChange" | "value"> & {
   value: string
   onChange: (value: string) => void
-  slackPermalink?: string
   getMessage: (ref: MessageRef) => Promise<string | null>
   option: {
     slackWorkspaceDomain: string
   }
 }
 
-export const SlackEditor = ({
-  getMessage,
-  onChange,
-  value,
-  slackPermalink,
-  option,
-  ...props
-}: Props) => {
+export const SlackEditor = ({ getMessage, onChange, value, option, ...props }: Props) => {
   const [messageRef, setMessageRef] = useState<MessageRef | null>(null)
   const [isPending, setIsPending] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    void (async () => {
       const text = await getTextFromClipboard()
       if (text == null) {
         return
