@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiLabelRouteImport } from './routes/api/label'
 import { Route as AuthedSlackRouteImport } from './routes/_authed.slack'
 import { Route as AuthedSponsorsIndexRouteImport } from './routes/_authed.sponsors.index'
 import { Route as AuthedMessageIndexRouteImport } from './routes/_authed.message.index'
@@ -28,8 +27,6 @@ import { Route as AuthedSponsorsSponsorIdEditRouteImport } from './routes/_authe
 import { Route as AuthedSponsorsSponsorIdDeleteRouteImport } from './routes/_authed.sponsors.$sponsorId.delete'
 import { Route as AuthedLabelsLabelIdEditRouteImport } from './routes/_authed.labels.$labelId.edit'
 import { Route as AuthedLabelsLabelIdDeleteRouteImport } from './routes/_authed.labels.$labelId.delete'
-import { Route as ApiLabelReadableIdLabelIdRemoveRouteImport } from './routes/api/label/$readableId/$labelId/remove'
-import { Route as ApiLabelReadableIdLabelIdAddRouteImport } from './routes/api/label/$readableId/$labelId/add'
 
 const AuthedRoute = AuthedRouteImport.update({
   id: '/_authed',
@@ -38,11 +35,6 @@ const AuthedRoute = AuthedRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiLabelRoute = ApiLabelRouteImport.update({
-  id: '/api/label',
-  path: '/api/label',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedSlackRoute = AuthedSlackRouteImport.update({
@@ -128,23 +120,10 @@ const AuthedLabelsLabelIdDeleteRoute =
     path: '/labels/$labelId/delete',
     getParentRoute: () => AuthedRoute,
   } as any)
-const ApiLabelReadableIdLabelIdRemoveRoute =
-  ApiLabelReadableIdLabelIdRemoveRouteImport.update({
-    id: '/$readableId/$labelId/remove',
-    path: '/$readableId/$labelId/remove',
-    getParentRoute: () => ApiLabelRoute,
-  } as any)
-const ApiLabelReadableIdLabelIdAddRoute =
-  ApiLabelReadableIdLabelIdAddRouteImport.update({
-    id: '/$readableId/$labelId/add',
-    path: '/$readableId/$labelId/add',
-    getParentRoute: () => ApiLabelRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/slack': typeof AuthedSlackRoute
-  '/api/label': typeof ApiLabelRouteWithChildren
   '/channel/$channel': typeof AuthedChannelChannelRoute
   '/labels/assign': typeof AuthedLabelsAssignRoute
   '/labels/new': typeof AuthedLabelsNewRoute
@@ -160,13 +139,10 @@ export interface FileRoutesByFullPath {
   '/sponsors/$sponsorId/edit': typeof AuthedSponsorsSponsorIdEditRoute
   '/api/auth/slack/authorize': typeof ApiAuthSlackAuthorizeRoute
   '/api/auth/slack/callback': typeof ApiAuthSlackCallbackRoute
-  '/api/label/$readableId/$labelId/add': typeof ApiLabelReadableIdLabelIdAddRoute
-  '/api/label/$readableId/$labelId/remove': typeof ApiLabelReadableIdLabelIdRemoveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/slack': typeof AuthedSlackRoute
-  '/api/label': typeof ApiLabelRouteWithChildren
   '/channel/$channel': typeof AuthedChannelChannelRoute
   '/labels/assign': typeof AuthedLabelsAssignRoute
   '/labels/new': typeof AuthedLabelsNewRoute
@@ -182,15 +158,12 @@ export interface FileRoutesByTo {
   '/sponsors/$sponsorId/edit': typeof AuthedSponsorsSponsorIdEditRoute
   '/api/auth/slack/authorize': typeof ApiAuthSlackAuthorizeRoute
   '/api/auth/slack/callback': typeof ApiAuthSlackCallbackRoute
-  '/api/label/$readableId/$labelId/add': typeof ApiLabelReadableIdLabelIdAddRoute
-  '/api/label/$readableId/$labelId/remove': typeof ApiLabelReadableIdLabelIdRemoveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authed': typeof AuthedRouteWithChildren
   '/_authed/slack': typeof AuthedSlackRoute
-  '/api/label': typeof ApiLabelRouteWithChildren
   '/_authed/channel/$channel': typeof AuthedChannelChannelRoute
   '/_authed/labels/assign': typeof AuthedLabelsAssignRoute
   '/_authed/labels/new': typeof AuthedLabelsNewRoute
@@ -206,15 +179,12 @@ export interface FileRoutesById {
   '/_authed/sponsors/$sponsorId/edit': typeof AuthedSponsorsSponsorIdEditRoute
   '/api/auth/slack/authorize': typeof ApiAuthSlackAuthorizeRoute
   '/api/auth/slack/callback': typeof ApiAuthSlackCallbackRoute
-  '/api/label/$readableId/$labelId/add': typeof ApiLabelReadableIdLabelIdAddRoute
-  '/api/label/$readableId/$labelId/remove': typeof ApiLabelReadableIdLabelIdRemoveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/slack'
-    | '/api/label'
     | '/channel/$channel'
     | '/labels/assign'
     | '/labels/new'
@@ -230,13 +200,10 @@ export interface FileRouteTypes {
     | '/sponsors/$sponsorId/edit'
     | '/api/auth/slack/authorize'
     | '/api/auth/slack/callback'
-    | '/api/label/$readableId/$labelId/add'
-    | '/api/label/$readableId/$labelId/remove'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/slack'
-    | '/api/label'
     | '/channel/$channel'
     | '/labels/assign'
     | '/labels/new'
@@ -252,14 +219,11 @@ export interface FileRouteTypes {
     | '/sponsors/$sponsorId/edit'
     | '/api/auth/slack/authorize'
     | '/api/auth/slack/callback'
-    | '/api/label/$readableId/$labelId/add'
-    | '/api/label/$readableId/$labelId/remove'
   id:
     | '__root__'
     | '/'
     | '/_authed'
     | '/_authed/slack'
-    | '/api/label'
     | '/_authed/channel/$channel'
     | '/_authed/labels/assign'
     | '/_authed/labels/new'
@@ -275,14 +239,11 @@ export interface FileRouteTypes {
     | '/_authed/sponsors/$sponsorId/edit'
     | '/api/auth/slack/authorize'
     | '/api/auth/slack/callback'
-    | '/api/label/$readableId/$labelId/add'
-    | '/api/label/$readableId/$labelId/remove'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedRoute: typeof AuthedRouteWithChildren
-  ApiLabelRoute: typeof ApiLabelRouteWithChildren
   ApiCronSendMessageRoute: typeof ApiCronSendMessageRoute
   ApiAuthSlackAuthorizeRoute: typeof ApiAuthSlackAuthorizeRoute
   ApiAuthSlackCallbackRoute: typeof ApiAuthSlackCallbackRoute
@@ -302,13 +263,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/label': {
-      id: '/api/label'
-      path: '/api/label'
-      fullPath: '/api/label'
-      preLoaderRoute: typeof ApiLabelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authed/slack': {
@@ -423,20 +377,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedLabelsLabelIdDeleteRouteImport
       parentRoute: typeof AuthedRoute
     }
-    '/api/label/$readableId/$labelId/remove': {
-      id: '/api/label/$readableId/$labelId/remove'
-      path: '/$readableId/$labelId/remove'
-      fullPath: '/api/label/$readableId/$labelId/remove'
-      preLoaderRoute: typeof ApiLabelReadableIdLabelIdRemoveRouteImport
-      parentRoute: typeof ApiLabelRoute
-    }
-    '/api/label/$readableId/$labelId/add': {
-      id: '/api/label/$readableId/$labelId/add'
-      path: '/$readableId/$labelId/add'
-      fullPath: '/api/label/$readableId/$labelId/add'
-      preLoaderRoute: typeof ApiLabelReadableIdLabelIdAddRouteImport
-      parentRoute: typeof ApiLabelRoute
-    }
   }
 }
 
@@ -475,24 +415,9 @@ const AuthedRouteChildren: AuthedRouteChildren = {
 const AuthedRouteWithChildren =
   AuthedRoute._addFileChildren(AuthedRouteChildren)
 
-interface ApiLabelRouteChildren {
-  ApiLabelReadableIdLabelIdAddRoute: typeof ApiLabelReadableIdLabelIdAddRoute
-  ApiLabelReadableIdLabelIdRemoveRoute: typeof ApiLabelReadableIdLabelIdRemoveRoute
-}
-
-const ApiLabelRouteChildren: ApiLabelRouteChildren = {
-  ApiLabelReadableIdLabelIdAddRoute: ApiLabelReadableIdLabelIdAddRoute,
-  ApiLabelReadableIdLabelIdRemoveRoute: ApiLabelReadableIdLabelIdRemoveRoute,
-}
-
-const ApiLabelRouteWithChildren = ApiLabelRoute._addFileChildren(
-  ApiLabelRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedRoute: AuthedRouteWithChildren,
-  ApiLabelRoute: ApiLabelRouteWithChildren,
   ApiCronSendMessageRoute: ApiCronSendMessageRoute,
   ApiAuthSlackAuthorizeRoute: ApiAuthSlackAuthorizeRoute,
   ApiAuthSlackCallbackRoute: ApiAuthSlackCallbackRoute,
