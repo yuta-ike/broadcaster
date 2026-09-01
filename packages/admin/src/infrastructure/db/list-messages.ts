@@ -52,7 +52,9 @@ export const listMessages = async (): Promise<MessageTemplateWithDetail[]> => {
           isExtShared: row.slackChannel.isExtShared,
         },
         slackUsers: row.slackUserIds,
-        labels: row.labelIds.map((labelId) => labelsMap.get(labelId)!),
+        labels: row.labelIds
+          .map((labelId) => labelsMap.get(labelId))
+          .filter((label) => label != null),
       }) satisfies Sponsor,
   )
   const sponsorsMap = new Map(sponsors.map((sponsor) => [sponsor.id, sponsor]))
@@ -67,11 +69,15 @@ export const listMessages = async (): Promise<MessageTemplateWithDetail[]> => {
       row.target.type === "Sponsor"
         ? {
             type: "Sponsor",
-            sponsors: row.target.sponsorIds.map((sponsorId) => sponsorsMap.get(sponsorId)!),
+            sponsors: row.target.sponsorIds
+              .map((sponsorId) => sponsorsMap.get(sponsorId))
+              .filter((sponsor) => sponsor != null),
           }
         : {
             type: "Label",
-            labels: row.target.labelIds.map((labelId) => labelsMap.get(labelId)!),
+            labels: row.target.labelIds
+              .map((labelId) => labelsMap.get(labelId))
+              .filter((label) => label != null),
           },
     createdAt: new Date(row.createdAt),
   }))
