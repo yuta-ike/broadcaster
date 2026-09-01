@@ -17,8 +17,8 @@ export const Datetime = ({ children, format, fallback }: Props) => {
   if (children != null) {
     return (
       <Tooltip hint={children.toISOString()}>
-        <time dateTime={children.toISOString()} className="flex items-center gap-1">
-          <TbClock />
+        <time dateTime={children.toISOString()} className="flex items-center gap-1 text-start">
+          <TbClock className="shrink-0" />
           {format != null
             ? formatDate(children, format)
             : formatDistanceToNow(children, {
