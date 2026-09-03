@@ -10,6 +10,7 @@ export const getScheduledMessages = async (): Promise<MessageTemplateWithDetail[
         $lte: new Date().toISOString(),
       },
       sentAt: null,
+      sendStatus: "pending",
     })
     .toArray()
 
@@ -92,6 +93,7 @@ export const getScheduledMessages = async (): Promise<MessageTemplateWithDetail[
               .filter((label) => label != null),
           },
     sentAt: row.sentAt == null ? null : new Date(row.sentAt),
+    sendStatus: row.sendStatus,
     createdAt: new Date(row.createdAt),
   }))
 }

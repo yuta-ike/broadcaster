@@ -8,6 +8,7 @@ export const updateMessageAsAlreadySent = async (id: string) => {
     {
       $set: {
         sentAt: new Date().toISOString(),
+        sendStatus: "sent",
       },
     },
   )

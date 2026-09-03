@@ -1,4 +1,4 @@
-import type { MessageTemplateWithDetail } from "../../../domain/model/Message.js"
+import type { MessageSendStatus, MessageTemplateWithDetail } from "../../../domain/model/Message.js"
 
 type Row = {
   scheduledAt: Date | null
@@ -9,6 +9,7 @@ type Row = {
   addMention: boolean
   sendImmediately: boolean
   sentAt: Date | null
+  sendStatus: MessageSendStatus
   targetSponsors: {
     name: string
     id: string
@@ -48,6 +49,7 @@ export const parseMessageRow = (row: Row): MessageTemplateWithDetail => {
     scheduledAt: row.scheduledAt ?? "Immediate",
     createdAt: row.createdAt,
     sentAt: row.sentAt,
+    sendStatus: row.sendStatus,
     target:
       0 < row.targetLabels.length
         ? {

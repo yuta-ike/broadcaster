@@ -50,6 +50,7 @@ export const MessageCollection = {
     addMention: z.boolean(),
     scheduledAt: z.iso.datetime(),
     sentAt: z.iso.datetime().nullable(),
+    sendStatus: z.enum(["pending", "sent", "failed"]),
     target: z.discriminatedUnion("type", [
       z.object({
         type: z.literal("Sponsor"),
