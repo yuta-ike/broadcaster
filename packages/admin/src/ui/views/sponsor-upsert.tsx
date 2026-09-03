@@ -17,7 +17,7 @@ import { LabelDisplay } from "../components/label-display.js"
 import { SlackChannelDisplay } from "../components/slack-channel-display.js"
 import { listSlackUsersController } from "../../controller/slack-users-list.js"
 import { CheckboxOption } from "broadcaster-components/control/checkbox.js"
-import { TbLoader } from "react-icons/tb"
+import { TbExternalLink, TbLoader } from "react-icons/tb"
 import { SlackUserChip } from "../components/slack-user-chip.js"
 import { Link } from "@tanstack/react-router"
 
@@ -146,9 +146,10 @@ export const SponsorUpsertForm = ({ sponsor, labels, initValue, onComplete }: Pr
             <Link
               to="/slack"
               target="_blank"
-              className="text-sky-500 mx-1 underline hover:no-underline transition"
+              className="text-sky-500 mx-1 underline hover:no-underline transition inline-flex items-center"
             >
               Slack連携する
+              <TbExternalLink className="inline-block" />
             </Link>
           </div>
         )}
