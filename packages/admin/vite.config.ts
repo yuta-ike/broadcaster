@@ -12,6 +12,9 @@ export default defineConfig({
   },
   resolve: {
     tsconfigPaths: true,
+    alias: {
+      "broadcaster-components/*": "../components/src/*",
+    },
   },
   plugins: [
     tailwindcss(),
