@@ -1,5 +1,7 @@
 import type { Label, Sponsor } from "./Sponsor.js"
 
+export type MessageSendStatus = "pending" | "sent" | "failed"
+
 export type MessageTemplate = {
   message: string
   addMention: boolean
@@ -31,6 +33,7 @@ export type MessageTemplateWithDetail = {
       }
   createdAt: Date
   sentAt: Date | null
+  sendStatus: MessageSendStatus
 }
 
 const getPlaceholderMatcher = (key: string): RegExp => {

@@ -8,14 +8,14 @@ export const saveMessage = async (message: MessageTemplate): Promise<MessageTemp
   const id = randomUUID()
   const now = new Date()
   const scheduledAt = message.scheduledAt === "Immediate" ? now : message.scheduledAt
-  const sentAt = message.scheduledAt === "Immediate" ? scheduledAt : null
 
   await mongoDb.collection<MessageCollection>(MessageCollection.name).insertOne({
     _id: id,
     message: message.message,
     addMention: message.addMention,
     scheduledAt: scheduledAt.toISOString(),
-    sentAt: sentAt?.toISOString() ?? null,
+    sentAt: null,
+    sendStatus: "pending",
     target: message.target,
     createdAt: now.toISOString(),
   })
@@ -36,7 +36,8 @@ export const saveMessage = async (message: MessageTemplate): Promise<MessageTemp
     message: message.message,
     addMention: message.addMention,
     scheduledAt,
-    sentAt,
+    sentAt: null,
+    sendStatus: "pending",
     target,
     createdAt: now,
   }

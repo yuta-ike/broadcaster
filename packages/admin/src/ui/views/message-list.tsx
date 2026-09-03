@@ -17,18 +17,23 @@ export const MessageListView = ({ messages }: MessageListViewProps) => {
           <Table.Th>ステータス</Table.Th>
           <Table.Th>メッセージ</Table.Th>
           <Table.Th>送信対象</Table.Th>
+          <Table.Th>予約日時</Table.Th>
           <Table.Th>送信日時</Table.Th>
           <Table.Th>作成日時</Table.Th>
         </Table.Tr>
       </Table.THead>
       <Table.TBody>
         {messages.map((message) => (
-          <Table.Tr key={message.id} highlight={message.sentAt == null}>
+          <Table.Tr key={message.id} highlight={message.sendStatus === "pending"}>
             {/* ステータス */}
             <Table.Td>
-              {message.sentAt == null ? (
+              {message.sendStatus === "pending" ? (
                 <div className="border border-orange-400 bg-orange-200 rounded-full w-max px-2 py-1 leading-none text-orange-700 text-xs">
                   未送信
+                </div>
+              ) : message.sendStatus === "failed" ? (
+                <div className="border border-red-400 bg-red-100 rounded-full w-max px-2 py-1 leading-none text-red-700 text-xs">
+                  送信失敗
                 </div>
               ) : (
                 <div className="border border-blue-500 bg-blue-100 rounded-full w-max px-2 py-1 leading-none text-blue-800 text-xs">
@@ -57,11 +62,22 @@ export const MessageListView = ({ messages }: MessageListViewProps) => {
               </div>
             </Table.Td>
 
+            {/* 予約日時 */}
+            <Table.Td>
+              <Datetime format={FORMATS.datetime}>
+                {message.scheduledAt == "Immediate" ? null : message.scheduledAt}
+              </Datetime>
+            </Table.Td>
+
             {/* 送信日時 */}
             <Table.Td>
-              <Datetime>
-                {message.scheduledAt == "Immediate" ? new Date() : message.scheduledAt}
-              </Datetime>
+              {message.sendStatus === "failed" ? (
+                <span className="text-red-700">送信失敗</span>
+              ) : (
+                <Datetime format={FORMATS.datetime} fallback="未送信">
+                  {message.sentAt}
+                </Datetime>
+              )}
             </Table.Td>
 
             {/* 作成日時 */}
