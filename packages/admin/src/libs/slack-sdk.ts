@@ -31,6 +31,7 @@ export class SlackSdk {
       username: "一斉送信",
       parse: "full",
       blocks: blocks ?? [],
+      unfurl_links: false,
     })
   }
 
